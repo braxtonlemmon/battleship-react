@@ -1,6 +1,6 @@
-const Ship = (length) => {
+const Ship = (id, length, direction) => {
   const positions = Array(length).fill(null);
-  
+
   const hit = (coord) => {
     positions[coord] = 'x';
   }
@@ -10,7 +10,9 @@ const Ship = (length) => {
   }
 
   return {
+    id,
     length,
+    direction,
     positions,
     hit,
     isSunk
