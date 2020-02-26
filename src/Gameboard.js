@@ -1,11 +1,9 @@
-import Ship from './Ship.js';
-
+import _ from "lodash";
 // based on a row,col coordinate system .... board[row][col] ...board[row][column]
 const Gameboard = () => {
   const board = new Array(10).fill(new Array(10).fill(null));
-  // for(let i = 0; i < 10; i ++) {
-  //   board[i] = new Array(10).fill(null);
-  // }
+  
+  // Will hold an array of objects. Each object contains (1) actual ship object (2) an array of the ship's coordinates on the gameboard
   const ships = [];
 
   const placeShip = (ship, row, col) => {
@@ -14,32 +12,41 @@ const Gameboard = () => {
       // if ship is occupying space:
       // (2) ship id
       // (3) ship segment's position number
-
       const { length, direction } = ship;
+      // const length = ship.length;
+      // const direction = ship.direction;
 
+      // an array containing the coordinates of the theoretical placement
       const coords = desiredPlacement(length, row, col, direction);
+
       if (isOnBoard(coords) && isAvailable(coords)) {
         coords.forEach((coord, position) => {
-          const row = coord[0];
-          const col = coord[1];
+          const [row, col] = coord;
           board[row][col] = `${ship.id}${position}`;
         })
-        ships.push({ ship, coords })  
+        ships.push({ ship, coords })
       } 
     }
 
   const receiveAttack = (row, col) => {
+    // attack on empty unattacked spot
     if (board[row][col] === null) {
       board[row][col] = 'M';
     } 
-    else if (board[row][col] !== 'M' || board[row][col] !== 'X') {
+    // attack on occupied unattacked ship spot
+    else if (board[row][col] !== 'M' && board[row][col] !== 'X') {
       const id = parseInt(board[row][col].split('')[0]);
       const index = parseInt(board[row][col].split('')[1]);
       const ship = getShip(id);
       ship.hit(index);
       board[row][col] = 'X';
     }
+    // attack on previously attacked spot
+    else {
+      return false;
+    }
   }  
+  
   // PRIVATE 
 
   const getShip = (id) => {
@@ -47,6 +54,7 @@ const Gameboard = () => {
     return foundShip.ship;
   }
   
+  // returns array of placement coordinates ignoring any obstacles
   const desiredPlacement = (length, row, col, direction) => {
     let coordinates = [];
     for(let i = 0; i < length; i ++) {

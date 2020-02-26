@@ -1,12 +1,12 @@
 const Ship = (id, length, direction) => {
   const positions = Array(length).fill(null);
 
-  const hit = (coord) => {
-    positions[coord] = 'x';
+  const hit = (index) => {
+    positions[index] = 'x';
   }
 
   const isSunk = () => {
-    return positions.every(spot => spot !== null);
+    return positions.every(spot => spot === 'x');
   }
 
   return {
