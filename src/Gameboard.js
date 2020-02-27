@@ -74,7 +74,7 @@ const Gameboard = () => {
 
   const isOnBoard = (coords) => {
     return coords.every(coord => {
-      return (coord[0] > 0 && coord[0] < 10) && (coord[1] > 0 && coord[1] < 10)
+      return (coord[0] >= 0 && coord[0] < 10) && (coord[1] >= 0 && coord[1] < 10)
     })
   }
 
@@ -87,6 +87,7 @@ const Gameboard = () => {
   // evaluate board spaces
   return {
     board,
+    ships,
     placeShip,
     receiveAttack
   }

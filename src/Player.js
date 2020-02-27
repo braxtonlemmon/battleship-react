@@ -9,7 +9,7 @@ const Player = (name) => {
       for (let i = 0; i < 2; i ++) {
         guess.push(Math.floor((Math.random() * 10)));
       }
-    } while (!isLegal(board, guess))
+    } while (!attackRecord.includes(guess) && !isLegal(board, guess))
     return guess;
   }
 
@@ -32,10 +32,10 @@ const Player = (name) => {
   return {
     name,
     isTurn,
+    attackRecord,
     generatePlay,
     isLegal,
     attack,
-    attackRecord
   }
 }
 
