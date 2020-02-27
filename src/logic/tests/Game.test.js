@@ -1,4 +1,4 @@
-import Game from './Game.js';
+import Game from '../Game.js';
 
 it('game creates human player object', () => {
   expect(Game.player).toMatchObject({
