@@ -51,6 +51,7 @@ const Gameboard = () => {
     else {
       return false;
     }
+    return true;
   }  
   
   // PRIVATE 
