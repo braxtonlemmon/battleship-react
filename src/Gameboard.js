@@ -1,8 +1,14 @@
 import _ from "lodash";
 // based on a row,col coordinate system .... board[row][col] ...board[row][column]
 const Gameboard = () => {
-  const board = new Array(10).fill(new Array(10).fill(null));
-  
+  // const board = new Array(10).fill(new Array(10).fill(null));
+  let board = [];
+  for(let i = 0; i < 10; i++) {
+    board[i] = [];
+    for(let j = 0; j < 10; j++) {
+      board[i][j] = null;
+    }
+  }
   // Will hold an array of objects. Each object contains (1) actual ship object (2) an array of the ship's coordinates on the gameboard
   const ships = [];
 
