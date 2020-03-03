@@ -3,48 +3,50 @@ import styled from 'styled-components';
 
 const BoardContainer = styled.div`
   display: grid;
+  grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   width: 20em;
   height: 20em;
   border: 2px solid black;
   margin: 20px;
-`
-
-const Row = styled.div`
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  width: 100%;
-  border: 1px solid yellow;
-`
+  background: ${props => {
+    return props.board.id === 0 ? 'yellow' : 'red';
+  }};
+`;
 
 const Tile = styled.div`
   height: 100%;
   width: 100%;
-  background: red;
   border: 1px solid black;
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+`;
 
-const generateTiles = () => {
-  let tiles = [];
-  for (let i = 0; i < 10; i++) {
-    tiles.push(<Tile />);
+
+
+const Board = (props) => {
+  const board = props.board;
+  
+  const generateBoard = () => {
+    let tiles = [];
+    board.board.forEach((row, y) => {
+      row.forEach((square, x) => {
+        tiles.push(
+          <Tile 
+            key={`${y}${x}`}
+            onClick={() => props.handleClick([y, x], board.id)}
+          >{square}</Tile>
+        )
+      })
+    })
+    return tiles;
   }
-  return tiles;
-};
-
-const generateRows = () => {
-  let rows = [];
-  for (let i = 0; i < 10; i++) {
-    rows.push(<Row key={i}>{generateTiles()}</Row>);
-  }
-  return rows;
-};
-
-const Board = () => {
 
   return (
-    <BoardContainer>
-      {generateRows()}
+    <BoardContainer board={props.board}>
+      {generateBoard()}
     </BoardContainer>
   )
 }

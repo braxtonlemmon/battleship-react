@@ -17,7 +17,9 @@ const Player = (name) => {
     const [row, col] = coords;
     if (gameboard.receiveAttack(row, col)) {
       attackRecord.push(coords);
-    }
+      return true;
+    } 
+    return false;
   }
 
   // PRIVATE

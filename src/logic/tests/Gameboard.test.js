@@ -4,7 +4,11 @@ import Ship from '../Ship.js';
 describe('gameboard', () => {
   let board;
   beforeEach(() => {
-    board = Gameboard();
+    board = Gameboard(1);
+  });
+
+  it('has an id', () => {
+    expect(board.id).toBe(1);
   });
 
   it('has an array of ten rows', () => {

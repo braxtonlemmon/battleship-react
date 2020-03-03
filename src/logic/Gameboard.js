@@ -1,6 +1,6 @@
 import _ from "lodash";
 // based on a row,col coordinate system .... board[row][col] ...board[row][column]
-const Gameboard = () => {
+const Gameboard = (id) => {
   // const board = new Array(10).fill(new Array(10).fill(null));
   let board = [];
   for(let i = 0; i < 10; i++) {
@@ -86,6 +86,7 @@ const Gameboard = () => {
 
   // evaluate board spaces
   return {
+    id,
     board,
     ships,
     placeShip,

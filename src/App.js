@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Reset } from 'styled-reset';
 import GlobalStyle from './GlobalStyle.js';
 import Board from './components/Board.js';
+import PrimaryGame from './components/PrimaryGame.js';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,8 +17,7 @@ function App() {
     <Wrapper>
       <Reset />
       <GlobalStyle />
-      <Board player />
-      <Board computer />
+      <PrimaryGame />
     </Wrapper>
   );
 }
