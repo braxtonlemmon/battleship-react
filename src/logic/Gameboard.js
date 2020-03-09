@@ -56,6 +56,13 @@ const Gameboard = (id) => {
   
   // PRIVATE 
 
+  const areAllSunk = () => {
+    return ships.every(shipInfo => {
+      const { ship } = shipInfo;
+      return ship.isSunk();
+    })
+  }
+
   const getShip = (id) => {
     const foundShip = ships.find(item => item.ship.id === id);
     return foundShip.ship;
@@ -90,7 +97,8 @@ const Gameboard = (id) => {
     board,
     ships,
     placeShip,
-    receiveAttack
+    receiveAttack,
+    areAllSunk
   }
 }
 

@@ -22,6 +22,7 @@ const Tile = styled.div`
   justify-content: center;
   align-items: center;
   cursor: default;
+  cursor: ${props => props.content ? 'default' : 'pointer'};
 `;
 
 
@@ -37,6 +38,7 @@ const Board = (props) => {
           <Tile 
             key={`${y}${x}`}
             onClick={() => props.handleClick([y, x], board.id)}
+            content={square === 'X' || square === 'M' ? true : false}
           >{square}</Tile>
         )
       })

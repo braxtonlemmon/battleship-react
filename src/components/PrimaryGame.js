@@ -3,6 +3,11 @@ import Gameboard from '../logic/Gameboard.js';
 import Board from './Board.js';
 import Player from '../logic/Player.js';
 import Ship from '../logic/Ship.js';
+import styled from 'styled-components';
+
+const Title = styled.h2`
+  font-weight: ${props => props.playerTurn ? 'bold' : 'regular'};
+`
 
 const PrimaryGame = () => {
   const player = Player('Braxton');
@@ -53,19 +58,27 @@ const PrimaryGame = () => {
     }, 0)
   }
 
+  const isOver = () => {
+    if (boardP.areAllSunk() || boardC.areAllSunk()) return true;
+    return false;
+  }
+
   populateBoard(boardP);
   populateBoard(boardC);
 
   return (
    <div>
-      <Board 
-        board={boardP} 
-        handleClick={handleClick}
-      />
-      <Board 
-        board={boardC}
-        handleClick={handleClick}
-     />
+    <Title playerTurn={!playerTurn} >Computer</Title>
+    <Board 
+      board={boardP} 
+      handleClick={handleClick}
+    />
+    <Title playerTurn={playerTurn} >Player</Title>
+    <Board 
+      board={boardC}
+      handleClick={handleClick}
+    />
+    { isOver() && <div>OVER!</div>}
    </div>
   )
 

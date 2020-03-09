@@ -28,7 +28,7 @@ describe('gameboard', () => {
     let ship;
     beforeEach(() => {
       ship = Ship(1, 3, 'horizontal');
-    })
+    });
 
     it('places a ship if coordinates are valid', () => {
       board.placeShip(ship, 1, 1);
@@ -58,6 +58,14 @@ describe('gameboard', () => {
       board.placeShip(ship, 1, 1);
       board.receiveAttack(1, 1);
       expect(board.board[1][1]).toBe('X');
+    });
+
+    it("reports when all ships are sunk", () => {
+      board.placeShip(ship, 1, 1);
+      ship.hit(0);
+      ship.hit(1);
+      ship.hit(2);
+      expect(board.areAllSunk()).toBeTruthy();
     });
   }) 
 })
