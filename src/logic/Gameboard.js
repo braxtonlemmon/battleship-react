@@ -1,4 +1,3 @@
-import _ from "lodash";
 // based on a row,col coordinate system .... board[row][col] ...board[row][column]
 const Gameboard = (id) => {
   // const board = new Array(10).fill(new Array(10).fill(null));
@@ -25,7 +24,7 @@ const Gameboard = (id) => {
       // an array containing the coordinates of the theoretical placement
       const coords = desiredPlacement(length, row, col, direction);
 
-      if (isOnBoard(coords) && isAvailable(coords)) {
+      if (isOnBoard(coords) && isAvailable(coords) && isNewShip(ship)) {
         coords.forEach((coord, position) => {
           const [row, col] = coord;
           board[row][col] = `${ship.id}${position}`;
@@ -33,6 +32,17 @@ const Gameboard = (id) => {
         ships.push({ ship, coords })
       } 
     }
+
+  const allShipsPlaced = () => {
+    return ships.length === 5 ? true : false;
+  }
+
+  const isNewShip = (ship) => {
+    if (ships.find(shipInfo => shipInfo.ship.id === ship.id)) {
+      return false;
+    }
+    return true;
+  }
 
   const receiveAttack = (row, col) => {
     // attack on empty unattacked spot
@@ -79,17 +89,20 @@ const Gameboard = (id) => {
     return coordinates;
   }
 
+  // desired location within board boundaries
   const isOnBoard = (coords) => {
     return coords.every(coord => {
       return (coord[0] >= 0 && coord[0] < 10) && (coord[1] >= 0 && coord[1] < 10)
     })
   }
 
+  // all spots at desired location are free
   const isAvailable = (coords) => {
     return coords.every(coord => {
       return board[coord[0]][coord[1]] === null;
     })
   }
+
 
   // evaluate board spaces
   return {
@@ -98,7 +111,8 @@ const Gameboard = (id) => {
     ships,
     placeShip,
     receiveAttack,
-    areAllSunk
+    areAllSunk,
+    allShipsPlaced
   }
 }
 
