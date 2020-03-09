@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ShipsContainer from './ShipsContainer.js';
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 
 const BankContainer = styled.div`
   display: flex;
@@ -41,10 +41,6 @@ const Button = styled.button`
 `;
 
 const ShipBank = (props) => { 
-  // const [selectedId, setSelectedId] = useState(null);
-  // const [length, setLength] = useState(null);
-  // const [orientation, setOrientation] = useState('horizontal');
-
   return (
     <BankContainer>
       <H2>Ship Bank</H2>
@@ -73,7 +69,6 @@ const ShipBank = (props) => {
       <p>Ship length: {props.length} </p>
       <p>Orientation: {props.orientation}</p>
     </BankContainer>
-
   )
 }
 

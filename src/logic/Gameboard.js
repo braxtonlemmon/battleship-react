@@ -1,4 +1,7 @@
 // based on a row,col coordinate system .... board[row][col] ...board[row][column]
+import shipsData from '../components/SHIPS.js';
+import Ship from './Ship.js';
+
 const Gameboard = (id) => {
   // const board = new Array(10).fill(new Array(10).fill(null));
   let board = [];
@@ -32,6 +35,23 @@ const Gameboard = (id) => {
         ships.push({ ship, coords })
       } 
     }
+
+
+  const placeRandomShips = () => {
+    shipsData.forEach(shipObject => {
+      const orientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+      const ship = Ship(shipObject.id, shipObject.length, orientation)
+      let shipsCount = ships.length;
+
+      while (shipsCount === ships.length) {
+        const row = Math.floor(Math.random() * 10);
+        const col = Math.floor(Math.random() * 10);
+        placeShip(ship, row, col);
+        console.log(shipsCount);
+        console.log(ships.length);
+      }
+    })
+  }
 
   const allShipsPlaced = () => {
     return ships.length === 5 ? true : false;
@@ -112,7 +132,8 @@ const Gameboard = (id) => {
     placeShip,
     receiveAttack,
     areAllSunk,
-    allShipsPlaced
+    allShipsPlaced,
+    placeRandomShips
   }
 }
 

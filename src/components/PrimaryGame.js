@@ -18,7 +18,6 @@ const PrimaryGame = () => {
   const [boardP, setBoardP] = useState(Gameboard(0));
   const [boardC, setBoardC] = useState(Gameboard(1));
   const [playerTurn, setPlayerTurn] = useState(true);
-  const [shipsPlaced, setShipsPlaced] = useState(false);
 
     const [selectedId, setSelectedId] = useState(null);
     const [length, setLength] = useState(null);
@@ -45,11 +44,13 @@ const PrimaryGame = () => {
   //   return gameboard;
   // }
   
+
   const handleClick = (coords, boardId) => {
     if (boardP.allShipsPlaced()) {
       makeMove(coords, boardId);
     } else {
       placeShip(coords);
+      if (!boardC.allShipsPlaced()) boardC.placeRandomShips();
     }
   }
 
@@ -89,6 +90,7 @@ const PrimaryGame = () => {
 
   // populateBoard(boardP);
   // populateBoard(boardC);
+  // boardC.placeRandomShips();
 
   return (
     <Container>
