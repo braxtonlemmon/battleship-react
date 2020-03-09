@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Ship from "./ShipDisplay.js";
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: flex;
@@ -53,6 +54,12 @@ const ShipsContainer = (props) => {
       { generateShips() }
     </Container>
   )
+}
+
+ShipsContainer.propTypes = {
+  setSelectedId: PropTypes.func,
+  setLength: PropTypes.func,
+  selectedId: PropTypes.number
 }
 
 export default ShipsContainer;

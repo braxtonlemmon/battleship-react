@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ShipsContainer from './ShipsContainer.js';
+import PropTypes, { number } from 'prop-types';
 
 const BankContainer = styled.div`
   display: flex;
@@ -74,6 +75,15 @@ const ShipBank = (props) => {
     </BankContainer>
 
   )
+}
+
+ShipBank.propTypes = {
+  selectedId:     PropTypes.number,
+  length:         PropTypes.number,
+  orientation:    PropTypes.string,
+  setOrientation: PropTypes.func,
+  setSelectedId:  PropTypes.func,
+  setLength:      PropTypes.func
 }
 
 export default ShipBank;

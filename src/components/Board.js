@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from "prop-types";
 
 const BoardContainer = styled.div`
   display: grid;
@@ -25,11 +26,9 @@ const Tile = styled.div`
   cursor: ${props => props.content === 'true' ? 'default' : 'pointer'};
 `;
 
-
-
 const Board = (props) => {
   const board = props.board;
-  
+
   const generateBoard = () => {
     let tiles = [];
     board.board.forEach((row, y) => {
@@ -51,6 +50,11 @@ const Board = (props) => {
       {generateBoard()}
     </BoardContainer>
   )
+}
+
+Board.propTypes = {
+  board: PropTypes.object,
+  handleClick: PropTypes.func
 }
 
 export default Board;

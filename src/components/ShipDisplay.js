@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ShipContainer = styled.div`
   display: flex;
@@ -22,10 +23,12 @@ const Ship = props => {
     }
     return ship;
   };
+
   const handleClick = () => {
     props.setSelectedId(props.id);
     props.setLength(props.length);
   }
+
   return (
     <ShipContainer 
       onClick={handleClick}
@@ -36,5 +39,14 @@ const Ship = props => {
     </ShipContainer>
   );
 };
+
+Ship.propTypes = {
+  key: PropTypes.number,
+  id: PropTypes.number,
+  selectedId: PropTypes.number,
+  length: PropTypes.number,
+  setSelectedId: PropTypes.func,
+  setLength: PropTypes.func
+}
 
 export default Ship;
