@@ -74,13 +74,16 @@ const PrimaryGame = () => {
   }
 
   const computerPlay = () => {
-    // setTimeout(() => {
+    setTimeout(() => {
+
+
       const board = { ...boardP };
       const coords = computer.generatePlay(board.board);
       computer.attack(board, coords);
       setBoardP(board);
-      setPlayerTurn(true);
-    // }, 1000)
+      setPlayerTurn(true)
+
+    }, 1000)
   }
 
   const isOver = () => {
@@ -95,7 +98,7 @@ const PrimaryGame = () => {
   return (
     <Container>
       <p>Rules</p>
-      <Board board={boardP} handleClick={handleClick} />
+      <Board board={boardC} handleClick={handleClick} />
       <ShipBank 
         selectedId={selectedId}
         length={length}
@@ -104,7 +107,7 @@ const PrimaryGame = () => {
         setSelectedId={setSelectedId}
         setLength={setLength} 
       />
-      <Board board={boardC} handleClick={handleClick} />
+      <Board board={boardP} handleClick={handleClick} />
       {isOver() && <div>OVER!</div>}
     </Container>
   );

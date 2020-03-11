@@ -10,9 +10,9 @@ const ShipContainer = styled.div`
 `;
 
 const Cell = styled.div`
-  border: 1px solid black;
-  width: 20px;
-  height: 20px;
+  border: 2px solid black;
+  width: 2em;
+  height: 2em;
 `;
 
 const Ship = props => {
