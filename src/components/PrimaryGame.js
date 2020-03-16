@@ -5,6 +5,7 @@ import Player from '../logic/Player.js';
 import Ship from '../logic/Ship.js';
 import styled from 'styled-components';
 import ShipBank from './ShipBank.js';
+import ComputerBank from './ComputerBank.js';
 
 const Container = styled.div`
   display: grid;
@@ -18,39 +19,18 @@ const PrimaryGame = () => {
   const [boardP, setBoardP] = useState(Gameboard(0));
   const [boardC, setBoardC] = useState(Gameboard(1));
   const [playerTurn, setPlayerTurn] = useState(true);
-
-    const [selectedId, setSelectedId] = useState(null);
-    const [length, setLength] = useState(null);
-    const [orientation, setOrientation] = useState("horizontal");
-
-  // const makeShips = () => {
-  //   const ships = {
-  //     carrier: Ship(0, 5, 'horizontal'),
-  //     battleship: Ship(1, 4, 'vertical'),
-  //     cruiser: Ship(2, 3, 'horizontal'),
-  //     submarine: Ship(3, 3, 'vertical'),
-  //     destroyer: Ship(4, 2, 'horizontal'),
-  //   }
-  //   return ships;
-  // }
-
-  // const populateBoard = (gameboard) => {
-  //   const { carrier, battleship, cruiser, submarine, destroyer } = makeShips();
-  //   gameboard.placeShip(carrier, 1, 1);
-  //   gameboard.placeShip(battleship, 2, 8);
-  //   gameboard.placeShip(cruiser, 9, 0);
-  //   gameboard.placeShip(submarine, 3, 6);
-  //   gameboard.placeShip(destroyer, 4, 2);
-  //   return gameboard;
-  // }
-  
+  const [selectedId, setSelectedId] = useState(null);
+  const [length, setLength] = useState(null);
+  const [orientation, setOrientation] = useState("horizontal");
+  const [pShips, setPShips] = useState([]);
+  const [cShips, setCShips] = useState([]);
 
   const handleClick = (coords, boardId) => {
     if (boardP.allShipsPlaced()) {
       makeMove(coords, boardId);
     } else {
       placeShip(coords);
-      if (!boardC.allShipsPlaced()) boardC.placeRandomShips();
+      if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
     }
   }
 
@@ -60,6 +40,11 @@ const PrimaryGame = () => {
     boardP.placeShip(ship, row, col);
     const temp = {...boardP};
     setBoardP(temp);
+    if (boardP.ships.length > pShips.length) {
+      const tempShips = [...pShips];
+      tempShips.push(ship.id);
+      setPShips(tempShips);
+    }
   }
 
   const makeMove = (coords, boardId) => {
@@ -75,14 +60,11 @@ const PrimaryGame = () => {
 
   const computerPlay = () => {
     setTimeout(() => {
-
-
       const board = { ...boardP };
       const coords = computer.generatePlay(board.board);
       computer.attack(board, coords);
       setBoardP(board);
       setPlayerTurn(true)
-
     }, 1000)
   }
 
@@ -91,13 +73,12 @@ const PrimaryGame = () => {
     return false;
   }
 
-  // populateBoard(boardP);
-  // populateBoard(boardC);
-  // boardC.placeRandomShips();
-
   return (
     <Container>
-      <p>Rules</p>
+      {/* Pass boardC.ships to ComputerBank */}
+      <ComputerBank 
+        ships={boardC.ships}
+      />
       <Board board={boardC} handleClick={handleClick} />
       <ShipBank 
         selectedId={selectedId}
@@ -105,9 +86,14 @@ const PrimaryGame = () => {
         orientation={orientation} 
         setOrientation={setOrientation}
         setSelectedId={setSelectedId}
-        setLength={setLength} 
+        setLength={setLength}
+        pShips={pShips}
       />
-      <Board board={boardP} handleClick={handleClick} />
+      <Board 
+        board={boardP} 
+        handleClick={handleClick}
+        pShips={pShips} 
+      />
       {isOver() && <div>OVER!</div>}
     </Container>
   );

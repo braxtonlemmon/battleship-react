@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from "prop-types";
+import Tile from './Tile.js';
 
 const BoardContainer = styled.div`
   display: grid;
@@ -11,25 +12,14 @@ const BoardContainer = styled.div`
   border: 2px solid black;
   margin: 20px;
   background: ${props => {
-    return props.board.id === 0 ? 'yellow' : 'red';
+    return props.board.id === 0 ? 'lightgrey' : 'lightblue';
   }};
-`;
-
-const Tile = styled.div`
-  height: 100%;
-  width: 100%;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: default;
-  cursor: ${props => props.content === 'true' ? 'default' : 'pointer'};
 `;
 
 const Board = (props) => {
   const board = props.board;
 
-  const generateBoard = () => {
+  const generateBoard = (boardId) => {
     let tiles = [];
     board.board.forEach((row, y) => {
       row.forEach((square, x) => {
@@ -38,7 +28,9 @@ const Board = (props) => {
             key={`${y}${x}`}
             onClick={() => props.handleClick([y, x], board.id)}
             content={square === 'X' || square === 'M' ? 'true' : 'false'}
-          >{square}</Tile>
+            square={square}
+            boardId={boardId}
+          />
         )
       })
     })
@@ -47,14 +39,15 @@ const Board = (props) => {
 
   return (
     <BoardContainer board={props.board}>
-      {generateBoard()}
+      {generateBoard(props.board.id)}
     </BoardContainer>
   )
 }
 
 Board.propTypes = {
   board: PropTypes.object,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  pShips: PropTypes.array
 }
 
 export default Board;

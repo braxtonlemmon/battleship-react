@@ -34,6 +34,7 @@ const ShipsContainer = (props) => {
             setSelectedId={props.setSelectedId}
             setLength={props.setLength}
             selectedId={props.selectedId}
+            pShips={props.pShips}
           />
           <h2>{ship.name.toUpperCase()}</h2>
         </ShipRow>
@@ -51,7 +52,8 @@ const ShipsContainer = (props) => {
 ShipsContainer.propTypes = {
   setSelectedId: PropTypes.func,
   setLength: PropTypes.func,
-  selectedId: PropTypes.number
+  selectedId: PropTypes.number,
+  pShips: PropTypes.array
 }
 
 export default ShipsContainer;

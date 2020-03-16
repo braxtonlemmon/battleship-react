@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ShipsContainer from './ShipsContainer.js';
 import PropTypes from 'prop-types';
+import SHIPS from './SHIPS.js';
 
 const BankContainer = styled.div`
   display: flex;
@@ -48,6 +49,7 @@ const ShipBank = (props) => {
         setSelectedId={props.setSelectedId}
         setLength={props.setLength}
         selectedId={props.selectedId}
+        pShips={props.pShips}
       />
       <OrientationButtons>
         <Button 
@@ -76,6 +78,7 @@ ShipBank.propTypes = {
   selectedId:     PropTypes.number,
   length:         PropTypes.number,
   orientation:    PropTypes.string,
+  pShips:         PropTypes.array,
   setOrientation: PropTypes.func,
   setSelectedId:  PropTypes.func,
   setLength:      PropTypes.func

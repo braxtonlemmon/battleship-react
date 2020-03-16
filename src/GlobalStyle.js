@@ -1,8 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  body, html {
     background: grey;
+    box-sizing: border-box;
   }
 
   * {
