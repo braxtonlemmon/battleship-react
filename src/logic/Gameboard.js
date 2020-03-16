@@ -12,7 +12,7 @@ const Gameboard = (id) => {
     }
   }
   // Will hold an array of objects. Each object contains (1) actual ship object (2) an array of the ship's coordinates on the gameboard
-  const ships = [];
+  let ships = [];
 
   const placeShip = (ship, row, col) => {
       // a board cell should know:
@@ -84,6 +84,16 @@ const Gameboard = (id) => {
     return true;
   }  
   
+  const reset = () => {
+    for (let i = 0; i < 10; i++) {
+      board[i] = [];
+      for (let j = 0; j < 10; j++) {
+        board[i][j] = null;
+      }
+    }
+    ships = [];
+  }
+
   // PRIVATE 
 
   const areAllSunk = () => {
@@ -133,7 +143,8 @@ const Gameboard = (id) => {
     receiveAttack,
     areAllSunk,
     allShipsPlaced,
-    placeRandomShips
+    placeRandomShips,
+    reset
   }
 }
 

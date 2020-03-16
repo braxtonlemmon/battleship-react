@@ -28,7 +28,6 @@ const ShipsContainer = (props) => {
       return (
         <ShipRow key={ship.id}>
           <Ship
-            key={ship.id}
             id={ship.id}
             length={ship.length}
             setSelectedId={props.setSelectedId}

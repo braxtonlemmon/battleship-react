@@ -14,6 +14,9 @@ const BoardContainer = styled.div`
   background: ${props => {
     return props.board.id === 0 ? 'lightgrey' : 'lightblue';
   }};
+  grid-area: ${props => {
+    return props.board.id === 0 ? 'playerBoard' : 'enemyBoard';
+  }};
 `;
 
 const Board = (props) => {

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import ShipsContainer from './ShipsContainer.js';
 import PropTypes from 'prop-types';
-import SHIPS from './SHIPS.js';
 
 const BankContainer = styled.div`
   display: flex;
@@ -11,6 +10,7 @@ const BankContainer = styled.div`
   border: 2px solid black;
   margin-left: 10px;
   padding: 10px;
+  grid-area: playerBank;
 `;
 
 const H2 = styled.h2`
@@ -67,9 +67,6 @@ const ShipBank = (props) => {
           Vertical
         </Button>
       </OrientationButtons>
-      <p>Ship id: {props.selectedId}</p>
-      <p>Ship length: {props.length} </p>
-      <p>Orientation: {props.orientation}</p>
     </BankContainer>
   )
 }

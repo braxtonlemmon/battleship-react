@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SHIPS from './SHIPS.js';
+import PropTypes from 'prop-types';
 
 const Ship = styled.div`
   text-align: center;
@@ -21,4 +22,10 @@ const EnemyShip = (props) => {
     </Ship>
   )
 }
+
+EnemyShip.propTypes = {
+  sunk: PropTypes.bool,
+  id: PropTypes.number
+}
+
 export default EnemyShip;
