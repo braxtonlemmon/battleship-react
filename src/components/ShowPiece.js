@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SHIPS from './SHIPS.js';
 import PropTypes from 'prop-types';
 
+// Styled components
 const PieceBox = styled.div`
   display: flex;
   flex-direction: ${props => {
@@ -23,6 +24,7 @@ const Tile = styled.div`
   background: ${props => props.color};
 `;
 
+// Functional component
 const ShowPiece = (props)  => {
   let tiles;
   const generateTiles = () => {
@@ -48,6 +50,7 @@ const ShowPiece = (props)  => {
   )
 }
 
+// Type validation
 ShowPiece.propTypes = {
   selectedId: PropTypes.number,
   length: PropTypes.number,

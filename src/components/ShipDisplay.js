@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import SHIPS from './SHIPS.js';
 
+// Styled components
 const ShipContainer = styled.div`
   display: flex;
   align-items: center;
@@ -14,11 +15,8 @@ const ShipContainer = styled.div`
       return SHIPS[props.id].color;
     }
   }};
-
   opacity: ${props => {
     return props.id === props.selectedId ? '0.4' : '1';
-
-
   }};
 `;
 
@@ -28,8 +26,8 @@ const Cell = styled.div`
   height: 2em;
 `;
 
+// Functional component
 const Ship = props => {
-
   const generateShip = () => {
     let ship = [];
     for (let i = 0; i < props.length; i++) {
@@ -55,6 +53,7 @@ const Ship = props => {
   );
 };
 
+// Type validation
 Ship.propTypes = {
   key: PropTypes.number,
   id: PropTypes.number,

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import SHIPS from './SHIPS.js';
 
+// Styled component
 const Tile = styled.div`
   height: 100%;
   width: 100%;

@@ -9,6 +9,7 @@ import ComputerBank from './ComputerBank.js';
 import PropTypes from 'prop-types';
 import ShowPiece from './ShowPiece.js';
 
+// Styled component
 const GameContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -18,6 +19,7 @@ const GameContainer = styled.div`
     "playerBank  playerBoard";
 `;
 
+// Function component
 const PrimaryGame = (props) => {
   const player = Player('Braxton');
   const computer = Player('Computer');
@@ -95,8 +97,6 @@ const PrimaryGame = (props) => {
     return false;
   }
 
-
-
   return (
     <GameContainer>
       {
@@ -132,6 +132,7 @@ const PrimaryGame = (props) => {
 
 }
 
+// Type validation
 PrimaryGame.propTypes = {
   endGame: PropTypes.func,
 }

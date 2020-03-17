@@ -4,6 +4,7 @@ import Ship from "./ShipDisplay.js";
 import PropTypes from 'prop-types';
 import ships from './SHIPS.js';
 
+// Styled components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,6 +23,7 @@ const ShipRow = styled.div`
   padding: 5px 15px;
 `;
  
+// Functional component
 const ShipsContainer = (props) => {
   const generateShips = () => {
     return ships.map(ship => {
@@ -48,6 +50,7 @@ const ShipsContainer = (props) => {
   )
 }
 
+// Type validation
 ShipsContainer.propTypes = {
   setSelectedId: PropTypes.func,
   setLength: PropTypes.func,

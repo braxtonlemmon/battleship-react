@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from "prop-types";
 import Tile from './Tile.js';
 
+// Styled component
 const BoardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -19,6 +20,7 @@ const BoardContainer = styled.div`
   }};
 `;
 
+// Function component
 const Board = (props) => {
   const board = props.board;
 
@@ -47,6 +49,7 @@ const Board = (props) => {
   )
 }
 
+// Type validation
 Board.propTypes = {
   board: PropTypes.object,
   handleClick: PropTypes.func,

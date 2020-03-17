@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ShipsContainer from './ShipsContainer.js';
 import PropTypes from 'prop-types';
 
+// Styled components
 const BankContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,6 +42,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+// Function component
 const ShipBank = (props) => { 
   return (
     <BankContainer>
@@ -71,6 +73,7 @@ const ShipBank = (props) => {
   )
 }
 
+// Type validation
 ShipBank.propTypes = {
   selectedId:     PropTypes.number,
   length:         PropTypes.number,

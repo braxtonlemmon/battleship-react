@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Function component
 const GameOver = (props) => {
   return (
     <>
@@ -10,6 +11,7 @@ const GameOver = (props) => {
   )
 }
 
+// Type validation
 GameOver.propTypes = {
   handleClick: PropTypes.func
 }

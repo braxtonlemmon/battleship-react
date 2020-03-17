@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import EnemyShip from './EnemyShip.js';
 
+// Styled component
 const TrackingContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@ const TrackingContainer = styled.div`
   grid-area: enemyBank;
 `;
 
+// Function component
 const ComputerBank = (props) => {
   const enemyShips = props.ships.map(shipData => {
     return (
@@ -32,6 +34,7 @@ const ComputerBank = (props) => {
   )
 }
 
+// Type validation
 ComputerBank.propTypes = {
   ships: PropTypes.array,
 }

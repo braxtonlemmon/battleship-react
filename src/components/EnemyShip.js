@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SHIPS from './SHIPS.js';
 import PropTypes from 'prop-types';
 
+// Styled component
 const Ship = styled.div`
   text-align: center;
   padding: 5px;
@@ -11,6 +12,7 @@ const Ship = styled.div`
   background: ${props => props.sunk ? props.color : 'none'};
 `;
 
+// Function component
 const EnemyShip = (props) => {
   const ship = SHIPS[props.id]; 
   return (
@@ -23,6 +25,7 @@ const EnemyShip = (props) => {
   )
 }
 
+// Type validation
 EnemyShip.propTypes = {
   sunk: PropTypes.bool,
   id: PropTypes.number

@@ -6,14 +6,17 @@ import Rules from './components/Rules.js';
 import PrimaryGame from './components/PrimaryGame.js';
 import GameOver from './components/GameOver.js';
 
+// Styled component
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-`
-function App() {
+`;
+
+// Functional component
+const App = () => {
   const [viewRules, setViewRules] = useState(true);
   const [playGame, setPlayGame] = useState(false);
   const [gameOver, setGameOver] = useState(false);
@@ -33,9 +36,15 @@ function App() {
     <Wrapper>
       <Reset />
       <GlobalStyle />
-      {viewRules && <Rules handleClick={handleClick}/>}
-      {playGame && <PrimaryGame endGame={endGame} />}
-      {gameOver && <GameOver handleClick={handleClick}/>}
+      {
+        viewRules && <Rules handleClick={handleClick} />
+      }
+      {
+        playGame && <PrimaryGame endGame={endGame} />
+      }
+      {
+        gameOver && <GameOver handleClick={handleClick} />
+      }
     </Wrapper>
   );
 }
