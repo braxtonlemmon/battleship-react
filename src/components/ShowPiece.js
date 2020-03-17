@@ -12,6 +12,8 @@ const PieceBox = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  width: 100%;
+  height: 100%;
 `;
 
 const Tile = styled.div`

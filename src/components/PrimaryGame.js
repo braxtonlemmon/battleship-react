@@ -14,9 +14,7 @@ const GameContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "enemyBank    enemyBoard"
-    "playerBank  playerBoard";
+
 `;
 
 // Function component
@@ -100,26 +98,21 @@ const PrimaryGame = (props) => {
   return (
     <GameContainer>
       {
-        boardC.allShipsPlaced() ?
-        <ComputerBank ships={boardC.ships} /> :
-        <ShowPiece 
-          selectedId={selectedId}
-          length={length}
-          orientation={orientation}
-        />
-
+      boardC.allShipsPlaced() &&
+      <ComputerBank ships={boardC.ships} />
       }
       <Board board={boardC} handleClick={handleClick} />
-      {!boardP.allShipsPlaced() && 
-        <ShipBank 
-          selectedId={selectedId}
-          length={length}
-          orientation={orientation} 
-          setOrientation={setOrientation}
-          setSelectedId={setSelectedId}
-          setLength={setLength}
-          pShips={pShips}
-        />
+      {
+      !boardP.allShipsPlaced() && 
+      <ShipBank 
+        selectedId={selectedId}
+        length={length}
+        orientation={orientation} 
+        setOrientation={setOrientation}
+        setSelectedId={setSelectedId}
+        setLength={setLength}
+        pShips={pShips}
+      />
       }
       <Board 
         board={boardP} 

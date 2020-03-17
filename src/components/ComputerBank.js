@@ -12,7 +12,7 @@ const TrackingContainer = styled.div`
   border: 1px solid black;
   height: 80%;
   width: 80%;
-  grid-area: enemyBank;
+  grid-area: 1 / 1 / 3 / 2;
 `;
 
 // Function component

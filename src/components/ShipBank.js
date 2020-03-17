@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ShipsContainer from './ShipsContainer.js';
 import PropTypes from 'prop-types';
+import ShowPiece from './ShowPiece.js';
 
 // Styled components
 const BankContainer = styled.div`
@@ -11,7 +12,8 @@ const BankContainer = styled.div`
   border: 2px solid black;
   margin-left: 10px;
   padding: 10px;
-  grid-area: playerBank;
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
 `;
 
 const H2 = styled.h2`
@@ -23,6 +25,7 @@ const H2 = styled.h2`
 const OrientationButtons = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 15px 0;
 `;
 
 const Button = styled.button`
@@ -69,6 +72,12 @@ const ShipBank = (props) => {
           Vertical
         </Button>
       </OrientationButtons>
+      <ShowPiece 
+        selectedId={props.selectedId}
+        length={props.length}
+        orientation={props.orientation}
+      />
+
     </BankContainer>
   )
 }

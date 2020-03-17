@@ -16,7 +16,7 @@ const BoardContainer = styled.div`
     return props.board.id === 0 ? 'lightgrey' : 'lightblue';
   }};
   grid-area: ${props => {
-    return props.board.id === 0 ? 'playerBoard' : 'enemyBoard';
+    return props.board.id === 0 ? '2 / 2 / 3 / 3' : '1 / 2 / 2 / 3';
   }};
 `;
 
