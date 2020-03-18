@@ -101,7 +101,11 @@ const PrimaryGame = (props) => {
       boardC.allShipsPlaced() &&
       <ComputerBank ships={boardC.ships} />
       }
-      <Board board={boardC} handleClick={handleClick} />
+      <Board 
+        board={boardC} 
+        handleClick={handleClick} 
+        playerTurn={playerTurn}
+      />
       {
       !boardP.allShipsPlaced() && 
       <ShipBank 
@@ -118,6 +122,7 @@ const PrimaryGame = (props) => {
         board={boardP} 
         handleClick={handleClick}
         pShips={pShips} 
+        playerTurn={playerTurn}
       />
       {isOver() && props.endGame()}
     </GameContainer>

@@ -11,6 +11,11 @@ const BoardContainer = styled.div`
   width: 20em;
   height: 20em;
   border: 2px solid black;
+  border: ${props => {
+    return props.playerTurn ?
+      (props.board.id === 0 ? '2px solid yellow' : '2px solid black') :
+      (props.board.id === 0 ? '2px solid black' : '2px solid yellow')
+  }};
   margin: 20px;
   background: ${props => {
     return props.board.id === 0 ? 'lightgrey' : 'lightblue';
@@ -43,7 +48,10 @@ const Board = (props) => {
   }
 
   return (
-    <BoardContainer board={props.board}>
+    <BoardContainer 
+      board={props.board}
+      playerTurn={props.playerTurn}
+    >
       {generateBoard(props.board.id)}
     </BoardContainer>
   )
@@ -53,7 +61,8 @@ const Board = (props) => {
 Board.propTypes = {
   board: PropTypes.object,
   handleClick: PropTypes.func,
-  pShips: PropTypes.array
+  pShips: PropTypes.array,
+  playerTurn: PropTypes.bool
 }
 
 export default Board;
