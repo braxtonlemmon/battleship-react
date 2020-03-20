@@ -48,17 +48,16 @@ const PrimaryGame = (props) => {
   });
 
   const handleClick = (coords, boardId) => {
-    console.log('click');
+    if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
+
     if (boardP.allShipsPlaced()) {
       makeMove(coords, boardId);
     } else {
       if (boardId === 0) placeShip(coords);
-      if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
     }
   }
 
   const handleDrop = (coords, boardId, position) => {
-    console.log('dropping');
     if (orientation === 'horizontal') {
       coords = [coords[0], coords[1] - position];
     } else {

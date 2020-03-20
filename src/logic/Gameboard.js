@@ -97,10 +97,11 @@ const Gameboard = (id) => {
   // PRIVATE 
 
   const areAllSunk = () => {
-    return ships.every(shipInfo => {
-      const { ship } = shipInfo;
-      return ship.isSunk();
-    })
+    return ships.length > 0 && 
+           ships.every(shipInfo => {
+             const { ship } = shipInfo;
+             return ship.isSunk();
+           })
   }
 
   const getShip = (id) => {
