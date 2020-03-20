@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SHIPS from './SHIPS.js';
 import PropTypes from 'prop-types';
 
+// Dnd stuff
+import { ItemTypes } from '../ItemTypes.js';
+import { useDrag } from 'react-dnd';
+//////////////////
+
 // Styled components
 const PieceBox = styled.div`
   display: flex;
-  flex-direction: ${props => {
+  /* flex-direction: ${props => {
     return props.orientation === 'horizontal' ? 'row' : 'column';
-  }}; 
+  }};  */
   justify-content: center;
   align-items: center;
   border: 1px solid black;
   width: 100%;
   height: 100%;
+`;
+
+const Ship = styled.div`
+  display: flex;
+  flex-direction : ${props => {
+    return props.orientation === 'horizontal' ? 'row' : 'column';
+  }};
+  cursor: pointer;
 `;
 
 const Tile = styled.div`
@@ -28,6 +41,30 @@ const Tile = styled.div`
 
 // Functional component
 const ShowPiece = (props)  => {
+  // Dnd stuff
+  const [position, setPosition] = useState(null);
+  const id = props.selectedId;
+  const length = props.length;
+  const orientation = props.orientation;
+  const [, drag] = useDrag({
+    item: { 
+      id,
+      length,
+      orientation,
+      position,
+      type: ItemTypes.SHIP
+    },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+    })
+  })
+  //////////////////
+
+  const handleMouseDown = (i) => {
+    console.log(i);
+    setPosition(i); 
+  }
+
   let tiles;
   const generateTiles = () => {
     tiles = [];
@@ -37,6 +74,8 @@ const ShowPiece = (props)  => {
         <Tile
           key={i}
           color={ship.color}
+          index={i}
+          onMouseDown={() => handleMouseDown(i)}
         >
           {i === 0 ? '*' : ''}
         </Tile>
@@ -46,10 +85,15 @@ const ShowPiece = (props)  => {
   }
 
   return (
-    <PieceBox orientation={props.orientation}>
-      { generateTiles() }
+    <PieceBox>
+      <Ship 
+        ref={drag} 
+        orientation={props.orientation}
+      >
+        {generateTiles()}
+      </Ship>
     </PieceBox>
-  )
+  );
 }
 
 // Type validation

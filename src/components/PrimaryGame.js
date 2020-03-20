@@ -48,12 +48,23 @@ const PrimaryGame = (props) => {
   });
 
   const handleClick = (coords, boardId) => {
+    console.log('click');
     if (boardP.allShipsPlaced()) {
       makeMove(coords, boardId);
     } else {
       if (boardId === 0) placeShip(coords);
       if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
     }
+  }
+
+  const handleDrop = (coords, boardId, position) => {
+    console.log('dropping');
+    if (orientation === 'horizontal') {
+      coords = [coords[0], coords[1] - position];
+    } else {
+      coords = [coords[0] - position, coords[1]];
+    }
+    if (boardId === 0) placeShip(coords);
   }
 
   const placeShip = (coords) => {
@@ -123,6 +134,7 @@ const PrimaryGame = (props) => {
         handleClick={handleClick}
         pShips={pShips} 
         playerTurn={playerTurn}
+        handleDrop={handleDrop}
       />
       {isOver() && props.endGame()}
     </GameContainer>

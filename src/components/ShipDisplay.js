@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import SHIPS from './SHIPS.js';
 
+// Dnd stuff
+import { ItemTypes } from '../ItemTypes.js';
+import { useDrag } from 'react-dnd';
+
 // Styled components
 const ShipContainer = styled.div`
   display: flex;
   align-items: center;
-  cursor: pointer;
   background: ${props => {
     if (props.pShips.includes(props.id)) {
       return 'none'; 
@@ -26,8 +29,23 @@ const Cell = styled.div`
   height: 2em;
 `;
 
+
+// Dnd stuff
+
+///////
+
 // Functional component
 const Ship = props => {
+  // Dnd stuff
+
+  const [, drag] = useDrag({
+    item: { type: ItemTypes.SHIP },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+    })
+  })
+
+  ///////////////
   const generateShip = () => {
     let ship = [];
     for (let i = 0; i < props.length; i++) {
@@ -43,6 +61,9 @@ const Ship = props => {
 
   return (
     <ShipContainer 
+      // dnd stuff
+      ref={drag}
+      ///////
       onClick={handleClick}
       id={props.id}
       selectedId={props.selectedId}

@@ -1,8 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
 import SHIPS from './SHIPS.js';
+import PropTypes from 'prop-types';
+// Dnd stuff
+import { ItemTypes } from '../ItemTypes.js';
+import { useDrop } from 'react-dnd';
+//////////
 
 // Styled component
-const Tile = styled.div`
+const Cell = styled.div`
   height: 100%;
   width: 100%;
   border: 1px solid black;
@@ -18,5 +24,36 @@ const Tile = styled.div`
     return 'none';
   }};
 `;
+
+const Tile = (props) => {
+  // Dnd stuff
+  const [{ isOver }, drop] = useDrop({
+    accept: ItemTypes.SHIP,
+    drop: (item) => props.handleDrop([props.y, props.x], props.id, item.position),
+    collect: monitor => ({
+      isOver: !!monitor.isOver(),
+    }) 
+  })
+  /////
+  return (
+    <Cell 
+      ref={drop}
+      content={props.content}
+      square={props.square}
+      boardId={props.boardId}
+      onClick={() => props.handleClick([props.y, props.x], props.id)}
+    />
+  )
+}
+
+Tile.propTypes = {
+  content: PropTypes.string,
+  square: PropTypes.any,
+  boardId: PropTypes.number,
+  handleClick: PropTypes.func,
+  x: PropTypes.number,
+  y: PropTypes.number,
+  id: PropTypes.number
+}
 
 export default Tile;

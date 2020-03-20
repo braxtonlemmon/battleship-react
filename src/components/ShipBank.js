@@ -72,11 +72,13 @@ const ShipBank = (props) => {
           Vertical
         </Button>
       </OrientationButtons>
-      <ShowPiece 
-        selectedId={props.selectedId}
-        length={props.length}
-        orientation={props.orientation}
-      />
+      {!props.pShips.includes(props.selectedId) && 
+        <ShowPiece 
+          selectedId={props.selectedId}
+          length={props.length}
+          orientation={props.orientation}
+        />
+      }
 
     </BankContainer>
   )
