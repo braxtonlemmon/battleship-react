@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Gameboard from '../logic/Gameboard.js';
-import Board from './Board.js';
 import Player from '../logic/Player.js';
 import Ship from '../logic/Ship.js';
-import styled from 'styled-components';
+import Board from './Board.js';
 import ShipBank from './ShipBank.js';
 import ComputerBank from './ComputerBank.js';
-import PropTypes from 'prop-types';
-import ShowPiece from './ShowPiece.js';
 
 // Styled component
 const GameContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-
 `;
 
 // Function component
@@ -48,30 +46,22 @@ const PrimaryGame = (props) => {
   });
 
   const handleClick = (coords, boardId) => {
+    boardP.allShipsPlaced() ? makeMove(coords, boardId) : (boardId === 0) && placeShip(coords);
     if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
-
-    if (boardP.allShipsPlaced()) {
-      makeMove(coords, boardId);
-    } else {
-      if (boardId === 0) placeShip(coords);
-    }
   }
 
   const handleDrop = (coords, boardId, position) => {
-    if (orientation === 'horizontal') {
-      coords = [coords[0], coords[1] - position];
-    } else {
-      coords = [coords[0] - position, coords[1]];
-    }
+    coords = orientation === 'horizontal' ? [coords[0], coords[1] - position] : [coords[0] - position, coords[1]];
     if (boardId === 0) placeShip(coords);
+    if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
   }
 
   const placeShip = (coords) => {
     const [row, col] = coords;
     const ship = Ship(selectedId, length, orientation);
     boardP.placeShip(ship, row, col);
-    const temp = {...boardP};
-    setBoardP(temp);
+    const tempBoard = {...boardP};
+    setBoardP(tempBoard);
     if (boardP.ships.length > pShips.length) {
       const tempShips = [...pShips];
       tempShips.push(ship.id);
@@ -97,7 +87,7 @@ const PrimaryGame = (props) => {
       computer.attack(board, coords);
       setBoardP(board);
       setPlayerTurn(true)
-    }, 1000)
+    }, 1500)
   }
 
   const isOver = () => {

@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import SHIPS from './SHIPS.js';
 import PropTypes from 'prop-types';
-// Dnd stuff
 import { ItemTypes } from '../ItemTypes.js';
 import { useDrop } from 'react-dnd';
-//////////
 
 // Styled component
 const Cell = styled.div`
@@ -51,6 +49,7 @@ Tile.propTypes = {
   square: PropTypes.any,
   boardId: PropTypes.number,
   handleClick: PropTypes.func,
+  handleDrop: PropTypes.func,
   x: PropTypes.number,
   y: PropTypes.number,
   id: PropTypes.number

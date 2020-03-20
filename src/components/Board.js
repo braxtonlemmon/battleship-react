@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 import Tile from './Tile.js';
-// Dnd stuff
-import { ItemTypes } from '../ItemTypes.js';
-import { useDrop } from 'react-dnd';
-//////////
 
 // Styled component
 const BoardContainer = styled.div`
@@ -40,7 +36,6 @@ const Board = (props) => {
         tiles.push(
           <Tile 
             key={`${y}${x}`}
-            // onClick={() => props.handleClick([y, x], board.id)}
             x={x}
             y={y}
             handleClick={props.handleClick}
@@ -70,6 +65,7 @@ const Board = (props) => {
 Board.propTypes = {
   board: PropTypes.object,
   handleClick: PropTypes.func,
+  handleDrop: PropTypes.func,
   pShips: PropTypes.array,
   playerTurn: PropTypes.bool
 }

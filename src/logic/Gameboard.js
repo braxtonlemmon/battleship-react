@@ -1,9 +1,7 @@
-// based on a row,col coordinate system .... board[row][col] ...board[row][column]
 import shipsData from '../components/SHIPS.js';
 import Ship from './Ship.js';
 
 const Gameboard = (id) => {
-  // const board = new Array(10).fill(new Array(10).fill(null));
   let board = [];
   for(let i = 0; i < 10; i++) {
     board[i] = [];
@@ -11,20 +9,10 @@ const Gameboard = (id) => {
       board[i][j] = null;
     }
   }
-  // Will hold an array of objects. Each object contains (1) actual ship object (2) an array of the ship's coordinates on the gameboard
   let ships = [];
 
   const placeShip = (ship, row, col) => {
-      // a board cell should know:
-      // (1) its coordinates <row, col>
-      // if ship is occupying space:
-      // (2) ship id
-      // (3) ship segment's position number
       const { length, direction } = ship;
-      // const length = ship.length;
-      // const direction = ship.direction;
-
-      // an array containing the coordinates of the theoretical placement
       const coords = desiredPlacement(length, row, col, direction);
 
       if (isOnBoard(coords) && isAvailable(coords) && isNewShip(ship)) {
@@ -65,11 +53,9 @@ const Gameboard = (id) => {
   }
 
   const receiveAttack = (row, col) => {
-    // attack on empty unattacked spot
     if (board[row][col] === null) {
       board[row][col] = 'M';
     } 
-    // attack on occupied unattacked ship spot
     else if (board[row][col] !== 'M' && board[row][col] !== 'X') {
       const id = parseInt(board[row][col].split('')[0]);
       const index = parseInt(board[row][col].split('')[1]);
@@ -77,7 +63,6 @@ const Gameboard = (id) => {
       ship.hit(index);
       board[row][col] = 'X';
     }
-    // attack on previously attacked spot
     else {
       return false;
     }
@@ -134,8 +119,6 @@ const Gameboard = (id) => {
     })
   }
 
-
-  // evaluate board spaces
   return {
     id,
     board,

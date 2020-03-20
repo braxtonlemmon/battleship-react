@@ -79,7 +79,6 @@ const ShipBank = (props) => {
           orientation={props.orientation}
         />
       }
-
     </BankContainer>
   )
 }
