@@ -24,7 +24,6 @@ const Cell = styled.div`
 `;
 
 const Tile = (props) => {
-  // Dnd stuff
   const [, drop] = useDrop({
     accept: ItemTypes.SHIP,
     drop: (item) => props.handleDrop([props.y, props.x], props.id, item.position),
@@ -32,7 +31,7 @@ const Tile = (props) => {
       isOver: !!monitor.isOver(),
     }) 
   })
-  /////
+
   return (
     <Cell 
       ref={drop}

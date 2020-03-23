@@ -20,9 +20,7 @@ const BankContainer = styled.div`
   background: rgba(122, 140, 255, 0.69);
 
   @media only screen and (min-width: 768px) {
-
     height: 90%;
-
   }
 `;
 
