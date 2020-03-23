@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.js": "/battleship/static/js/main.51a43934.chunk.js",
-    "main.js.map": "/battleship/static/js/main.51a43934.chunk.js.map",
-    "runtime-main.js": "/battleship/static/js/runtime-main.56b15e06.js",
-    "runtime-main.js.map": "/battleship/static/js/runtime-main.56b15e06.js.map",
-    "static/css/2.c227041c.chunk.css": "/battleship/static/css/2.c227041c.chunk.css",
-    "static/js/2.1e21f56f.chunk.js": "/battleship/static/js/2.1e21f56f.chunk.js",
-    "static/js/2.1e21f56f.chunk.js.map": "/battleship/static/js/2.1e21f56f.chunk.js.map",
-    "index.html": "/battleship/index.html",
-    "precache-manifest.fb26251d410a862fdebb2cf68cb53518.js": "/battleship/precache-manifest.fb26251d410a862fdebb2cf68cb53518.js",
-    "service-worker.js": "/battleship/service-worker.js",
-    "static/css/2.c227041c.chunk.css.map": "/battleship/static/css/2.c227041c.chunk.css.map",
-    "static/js/2.1e21f56f.chunk.js.LICENSE.txt": "/battleship/static/js/2.1e21f56f.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/battleship/static/media/londrina-solid-latin-900.c14f0b83.woff"
+    "main.js": "/battleship-react/static/js/main.51a43934.chunk.js",
+    "main.js.map": "/battleship-react/static/js/main.51a43934.chunk.js.map",
+    "runtime-main.js": "/battleship-react/static/js/runtime-main.a2d02d12.js",
+    "runtime-main.js.map": "/battleship-react/static/js/runtime-main.a2d02d12.js.map",
+    "static/css/2.6be163d4.chunk.css": "/battleship-react/static/css/2.6be163d4.chunk.css",
+    "static/js/2.68057a54.chunk.js": "/battleship-react/static/js/2.68057a54.chunk.js",
+    "static/js/2.68057a54.chunk.js.map": "/battleship-react/static/js/2.68057a54.chunk.js.map",
+    "index.html": "/battleship-react/index.html",
+    "precache-manifest.6b83680699cae1d022199c270e03f7e2.js": "/battleship-react/precache-manifest.6b83680699cae1d022199c270e03f7e2.js",
+    "service-worker.js": "/battleship-react/service-worker.js",
+    "static/css/2.6be163d4.chunk.css.map": "/battleship-react/static/css/2.6be163d4.chunk.css.map",
+    "static/js/2.68057a54.chunk.js.LICENSE.txt": "/battleship-react/static/js/2.68057a54.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/battleship-react/static/media/londrina-solid-latin-900.c14f0b83.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.56b15e06.js",
-    "static/css/2.c227041c.chunk.css",
-    "static/js/2.1e21f56f.chunk.js",
+    "static/js/runtime-main.a2d02d12.js",
+    "static/css/2.6be163d4.chunk.css",
+    "static/js/2.68057a54.chunk.js",
     "static/js/main.51a43934.chunk.js"
   ]
 }
