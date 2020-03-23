@@ -66,7 +66,7 @@ const PrimaryGame = (props) => {
   });
 
   const handleClick = (coords, boardId) => {
-    boardP.allShipsPlaced() ? makeMove(coords, boardId) : (boardId === 0) && placeShip(coords);
+    boardP.allShipsPlaced() ? makeMove(coords, boardId) : (boardId === 0) && length > 0 && placeShip(coords);
     if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
   }
 
