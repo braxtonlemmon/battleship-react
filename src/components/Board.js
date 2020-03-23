@@ -11,15 +11,10 @@ const BoardContainer = styled.div`
   grid-template-rows: repeat(10, 1fr);
   width: 15em;
   height: 15em;
-
-  border: ${props => {
-    return props.playerTurn ?
-      (props.board.id === 0 ? '8px solid yellow' : '8px solid black') :
-      (props.board.id === 0 ? '8px solid black' : '8px solid yellow')
-  }};
-  margin: 20px;
+  border: 8px solid black;
+  margin: 10px;
   background: ${props => {
-    return props.board.id === 0 ? 'lightgrey' : 'lightblue';
+    return props.board.id === 0 ? "lightgrey" : "#f1f3ff";
   }};
   grid-area: ${props => {
     return props.board.id === 0 ? '2 / 2 / 3 / 3' : '1 / 2 / 2 / 3';

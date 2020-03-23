@@ -7,6 +7,7 @@ import Ship                           from '../logic/Ship.js';
 import Board                          from './Board.js';
 import ShipBank                       from './ShipBank.js';
 import ComputerBank                   from './ComputerBank.js';
+import AttackIndicator                from './AttackIndicator.js';
 
 // Styled component
 const GameContainer = styled.div`
@@ -117,32 +118,35 @@ const PrimaryGame = (props) => {
 
   return (
     <GameContainer>
-      {
-      boardC.allShipsPlaced() &&
-      <ComputerBank ships={boardC.ships} />
-      }
-      <Board 
-        board={boardC} 
-        handleClick={handleClick} 
+      {boardC.allShipsPlaced() && (
+        <>
+          <ComputerBank ships={boardC.ships} />
+          <AttackIndicator
+            playerTurn={playerTurn}
+          />
+        </>
+      )}
+      <Board
+        board={boardC}
+        handleClick={handleClick}
         playerTurn={playerTurn}
         computer
       />
-      {
-      !boardP.allShipsPlaced() && 
-      <ShipBank 
-        selectedId={selectedId}
-        length={length}
-        orientation={orientation} 
-        setOrientation={setOrientation}
-        setSelectedId={setSelectedId}
-        setLength={setLength}
-        pShips={pShips}
-      />
-      }
-      <Board 
-        board={boardP} 
+      {!boardP.allShipsPlaced() && (
+        <ShipBank
+          selectedId={selectedId}
+          length={length}
+          orientation={orientation}
+          setOrientation={setOrientation}
+          setSelectedId={setSelectedId}
+          setLength={setLength}
+          pShips={pShips}
+        />
+      )}
+      <Board
+        board={boardP}
         handleClick={handleClick}
-        pShips={pShips} 
+        pShips={pShips}
         playerTurn={playerTurn}
         handleDrop={handleDrop}
       />

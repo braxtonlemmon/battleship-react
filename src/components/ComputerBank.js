@@ -9,10 +9,14 @@ const TrackingContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
   height: 80%;
   width: 80%;
   grid-area: 1 / 1 / 3 / 2;
+  margin-bottom: 20px;
+`;
+
+const H2 = styled.h2`
+  font-size: 2em;
 `;
 
 // Function component
@@ -29,6 +33,7 @@ const ComputerBank = (props) => {
   
   return (
     <TrackingContainer>
+      <H2>Enemy Ships</H2>
       { enemyShips }
     </TrackingContainer>
   )

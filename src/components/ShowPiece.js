@@ -25,6 +25,7 @@ const Ship = styled.div`
     return props.orientation === 'horizontal' ? 'row' : 'column';
   }};
   cursor: pointer;
+  border: 2px solid black;
 `;
 
 const Tile = styled.div`
@@ -87,12 +88,14 @@ const ShowPiece = (props)  => {
 
   return (
     <PieceBox>
-      <Ship 
-        ref={drag} 
-        orientation={props.orientation}
-      >
-        {!props.pShips.includes(props.selectedId) && generateTiles()}
-      </Ship>
+      {!props.pShips.includes(props.selectedId) && props.length > 0 &&
+        <Ship 
+          ref={drag} 
+          orientation={props.orientation}
+        >
+          {generateTiles()}
+        </Ship>
+      }
     </PieceBox>
   );
 }

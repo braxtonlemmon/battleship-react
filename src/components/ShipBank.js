@@ -10,18 +10,18 @@ const BankContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid black;
-  padding: 10px;
+  border: 3px solid black;
+  padding: 20px 10px;
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
   height: 80%;
   width: 90%;
+  background: rgba(122, 140, 255, 0.69);
 `;
 
 const H2 = styled.h2`
   font-size: 2em;
   font-weight: bold;
-  margin: 10px 0;
 `;
 
 const OrientationButtons = styled.div`

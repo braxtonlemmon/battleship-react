@@ -9,6 +9,7 @@ import { useDrag } from 'react-dnd';
 const ShipContainer = styled.div`
   display: flex;
   align-items: center;
+  border: 2px solid black;
   background: ${props => {
     if (props.pShips.includes(props.id)) {
       return 'none'; 
@@ -22,7 +23,7 @@ const ShipContainer = styled.div`
 `;
 
 const Cell = styled.div`
-  border: 2px solid black;
+  border: 1px solid black;
   width: 1.5em;
   height: 1.5em;
   @media only screen and (min-width: 768px) {

@@ -6,10 +6,12 @@ import PropTypes from 'prop-types';
 // Styled component
 const Ship = styled.div`
   text-align: center;
-  padding: 5px;
-  margin: 10px 0;
+  margin: 5px 0;
   border: 1px solid black;
   background: ${props => props.sunk ? props.color : 'none'};
+  width: ${props => `${props.length * 3.1}em`};
+  font-size: 0.8em;
+  padding: 5px 1px;
 `;
 
 // Function component
@@ -19,6 +21,7 @@ const EnemyShip = (props) => {
     <Ship 
       sunk={props.sunk}
       color={ship.color}
+      length={ship.length}
     >
       {`${ship.name.toUpperCase()} (${ship.length})`}
     </Ship>
