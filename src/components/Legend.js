@@ -31,7 +31,6 @@ const Box = styled.div`
 const Legend = () => {
   return (
     <Container>
-      <h1>Legend</h1>
       <p>Miss</p>
       <Box blue></Box>
       <p>Hit</p>
