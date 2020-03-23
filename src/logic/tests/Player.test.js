@@ -32,13 +32,20 @@ describe('computer', () => {
     expect(guess[1]).toBeGreaterThanOrEqual(0);
   })
 
-  it('knows a spot previously attacked and marked as M is not a valid play', () => {
+  it('only picks random spots with odd/even coord pairs', () => {
+    const guess = computer.generatePlay(gameboard.board);
+    let firstCheck = (guess[0] % 2 === 0) && !(guess[1] % 2 === 0);
+    let secondCheck = !(guess[0] % 2 === 0) && (guess[1] % 2 === 0);
+    expect(firstCheck || secondCheck).toBeTruthy();
+  })
+
+  xit('knows a spot previously attacked and marked as M is not a valid play', () => {
     gameboard.board[1][1] = 'M';
     let guess = [1, 1];
     expect(computer.isLegal(gameboard.board, guess)).toBe(false);
   })
 
-  it('knows a spot previously attacked and marked as X is not a valid play', () => {
+  xit('knows a spot previously attacked and marked as X is not a valid play', () => {
     gameboard.board[2][3] = 'X';
     let guess = [2, 3];
     expect(computer.isLegal(gameboard.board, guess)).toBe(false);
@@ -58,15 +65,28 @@ describe('attacking', () => {
     expect(gameboard.board[2][3]).toBe('M');
   });
 
-  it('player keeps track of attacks made', () => {
+  xit('player keeps track of attacks made', () => {
     player.attack(gameboard, coords);
     expect(player.attackRecord).toContainEqual([2, 3]);
   });
 
-  it('does not add repeat attack second time to array', () => {
+  xit('does not add repeat attack second time to array', () => {
     player.attack(gameboard, coords);
     player.attack(gameboard, coords);
     expect(player.attackRecord).toHaveLength(1);
   });
+})
+
+xdescribe('attacking with maybes', () => {
+  let player, gameboard;
+  beforeEach(() => {
+    player = Player('Braxton');
+    gameboard = Gameboard();
+    player.maybes = [[1,5], [2,6], [3,5], [2,4]];
+  });
+
+  it('does not generate random play, but first item from maybes', () => {
+    expect(player.generatePlay(gameboard.board)).toBe([1,5]);
+  })
 })
 

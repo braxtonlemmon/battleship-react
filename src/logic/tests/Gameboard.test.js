@@ -54,7 +54,7 @@ describe('gameboard', () => {
       expect(board.board[1][1]).toBeTruthy();
     });
 
-    it('marks "X" if spot is occupied and not hit', () => {
+    xit('marks "X" if spot is occupied and not hit', () => {
       board.placeShip(ship, 1, 1);
       board.receiveAttack(1, 1);
       expect(board.board[1][1]).toBe('X');
@@ -67,5 +67,35 @@ describe('gameboard', () => {
       ship.hit(2);
       expect(board.areAllSunk()).toBeTruthy();
     });
+
+    it('receiveHit returns true if ship hit', () => {
+      board.placeShip(ship, 1, 1);
+      expect(board.receiveHit(1, 1)).toBeTruthy();
+    });
+
+    it('receiveHit returns false if ship missed', () => {
+      board.placeShip(ship, 1, 1);
+      expect(board.receiveHit(7, 7)).toBeFalsy();
+    });
+
+    it('receiveHit returns false for already hit ship', () => {
+      board.placeShip(ship, 1, 1);
+      board.receiveHit(1, 1);
+      expect(board.receiveHit(1, 1)).toBeFalsy();
+    });
+
+    it('receiveMiss returns false if ship hit', () => {
+      board.placeShip(ship, 1, 1);
+      expect(board.receiveMiss(1, 1)).toBeFalsy();
+    });
+
+    it('receiveMiss returns true if empty space attacked', () => {
+      expect(board.receiveMiss(5, 4)).toBeTruthy();
+    });
+
+    it('receiveMiss returns false if cell was already attacked and empty', () => {
+      board.receiveMiss(2, 3);
+      expect(board.receiveMiss(2, 3)).toBeFalsy();
+    })
   }) 
 })

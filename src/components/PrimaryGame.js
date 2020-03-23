@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import Gameboard from '../logic/Gameboard.js';
-import Player from '../logic/Player.js';
-import Ship from '../logic/Ship.js';
-import Board from './Board.js';
-import ShipBank from './ShipBank.js';
-import ComputerBank from './ComputerBank.js';
+import styled                         from 'styled-components';
+import PropTypes                      from 'prop-types';
+import Gameboard                      from '../logic/Gameboard.js';
+import Player                         from '../logic/Player.js';
+import Ship                           from '../logic/Ship.js';
+import Board                          from './Board.js';
+import ShipBank                       from './ShipBank.js';
+import ComputerBank                   from './ComputerBank.js';
 
 // Styled component
 const GameContainer = styled.div`
@@ -17,29 +17,43 @@ const GameContainer = styled.div`
 
 // Function component
 const PrimaryGame = (props) => {
-  const player = Player('Braxton');
-  const computer = Player('Computer');
-  const [boardP, setBoardP] = useState(Gameboard(0));
-  const [boardC, setBoardC] = useState(Gameboard(1));
-  const [playerTurn, setPlayerTurn] = useState(true);
-  const [selectedId, setSelectedId] = useState(null);
-  const [length, setLength] = useState(null);
+  const [player, setPlayer] =           useState(Player('Braxton'));
+  const [computer, setComputer] =       useState(Player('Computer'));
+  const [boardP, setBoardP] =           useState(Gameboard(0));
+  const [boardC, setBoardC] =           useState(Gameboard(1));
+  const [playerTurn, setPlayerTurn] =   useState(true);
+  const [selectedId, setSelectedId] =   useState(null);
+  const [length, setLength] =           useState(null);
   const [orientation, setOrientation] = useState("horizontal");
-  const [pShips, setPShips] = useState([]);
+  const [pShips, setPShips] =           useState([]);
 
   const resetGame = () => {
-    const tempBoardP = {...boardP};
-    const tempBoardC = {...boardC};
-    tempBoardP.reset();
-    tempBoardC.reset();
-    setBoardP(tempBoardP);
-    setBoardC(tempBoardC);    
+    setBoardP(prevBoard => {
+      prevBoard.reset();
+      return prevBoard;
+    });
+
+    setBoardC(prevBoard => {
+      prevBoard.reset();
+      return prevBoard;
+    });
+
+    setPlayer(prevPlayer => {
+      prevPlayer.reset();
+      return prevPlayer;
+    });
+
+    setComputer(prevComputer => {
+      prevComputer.reset();
+      return prevComputer;
+    });
+
     setPlayerTurn(true);
     setSelectedId(null);
     setLength(null);
     setOrientation('horizontal');
     setPShips([]);
-  }
+  };
 
   useEffect(() => {
     if (isOver()) resetGame();
@@ -128,7 +142,6 @@ const PrimaryGame = (props) => {
       {isOver() && props.endGame()}
     </GameContainer>
   );
-
 }
 
 // Type validation
