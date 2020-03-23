@@ -9,10 +9,15 @@ const TrackingContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80%;
-  width: 80%;
-  grid-area: 1 / 1 / 3 / 2;
+  background: rgba(155, 255, 320, 0.3);
+  padding: 20px 10px;
+  border: 5px solid black;
+  width: 90%;
+  grid-area: 1 / 1 / 2 / 2;
   margin-bottom: 20px;
+  @media only screen and (min-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const H2 = styled.h2`

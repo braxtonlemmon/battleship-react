@@ -33,8 +33,6 @@ const Gameboard = (id) => {
         const row = Math.floor(Math.random() * 10);
         const col = Math.floor(Math.random() * 10);
         placeShip(ship, row, col);
-        console.log(shipsCount);
-        console.log(ships.length);
       }
     })
   };

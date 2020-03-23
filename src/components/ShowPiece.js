@@ -31,7 +31,7 @@ const Ship = styled.div`
 const Tile = styled.div`
   height: 1.5em;
   width: 1.5em;
-
+  font-weight: bold;
   @media only screen and (min-width: 768px) {
     height: 2em;
     width: 2em;
@@ -63,7 +63,6 @@ const ShowPiece = (props)  => {
   })
 
   const handleMouseDown = (i) => {
-    console.log(i);
     setPosition(i); 
   }
 

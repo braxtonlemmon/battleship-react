@@ -8,6 +8,7 @@ import Board                          from './Board.js';
 import ShipBank                       from './ShipBank.js';
 import ComputerBank                   from './ComputerBank.js';
 import AttackIndicator                from './AttackIndicator.js';
+import Legend                         from './Legend.js';
 
 // Styled component
 const GameContainer = styled.div`
@@ -19,6 +20,13 @@ const GameContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    margin: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    gap: 20px;
   }
 `;
 
@@ -68,13 +76,21 @@ const PrimaryGame = (props) => {
 
   const handleClick = (coords, boardId) => {
     boardP.allShipsPlaced() ? makeMove(coords, boardId) : (boardId === 0) && length > 0 && placeShip(coords);
-    if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
+    if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) {
+      const tempBoard = {...boardC};
+      tempBoard.placeRandomShips();
+      setBoardC(tempBoard);
+    }
   }
 
   const handleDrop = (coords, boardId, position) => {
     coords = orientation === 'horizontal' ? [coords[0], coords[1] - position] : [coords[0] - position, coords[1]];
-    if (boardId === 0) placeShip(coords);
-    if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) boardC.placeRandomShips();
+    if (boardId === 0 && length > 0) placeShip(coords);
+    if (boardP.allShipsPlaced() && !boardC.allShipsPlaced()) {
+      let tempBoard = {...boardC};
+      tempBoard.placeRandomShips();
+      setBoardC(tempBoard);
+    }
   }
 
   const placeShip = (coords) => {
@@ -121,9 +137,10 @@ const PrimaryGame = (props) => {
       {boardC.allShipsPlaced() && (
         <>
           <ComputerBank ships={boardC.ships} />
-          <AttackIndicator
-            playerTurn={playerTurn}
-          />
+          <div>
+            <AttackIndicator playerTurn={playerTurn} />
+            <Legend />
+          </div>
         </>
       )}
       <Board
@@ -150,7 +167,8 @@ const PrimaryGame = (props) => {
         playerTurn={playerTurn}
         handleDrop={handleDrop}
       />
-      {isOver() && props.endGame()}
+      {isOver() && boardC.areAllSunk() && props.endGame("player")}
+      {isOver() && boardP.areAllSunk() && props.endGame("computer")}
     </GameContainer>
   );
 }

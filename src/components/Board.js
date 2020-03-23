@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 import Tile from './Tile.js';
+import PlacingInstructions from './PlacingInstructions.js';
 
 // Styled component
 const BoardContainer = styled.div`
@@ -12,7 +13,7 @@ const BoardContainer = styled.div`
   width: 15em;
   height: 15em;
   border: 8px solid black;
-  margin: 10px;
+  margin: 5px;
   background: ${props => {
     return props.board.id === 0 ? "lightgrey" : "#f1f3ff";
   }};
@@ -26,19 +27,6 @@ const BoardContainer = styled.div`
   }
 `;
 
-const Setup = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5em;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  letter-spacing: 4px;
-`;
 // Function component
 const Board = (props) => {
   const board = props.board;
@@ -71,7 +59,7 @@ const Board = (props) => {
       playerTurn={props.playerTurn}
     >
       {generateBoard(props.board.id)}
-      {props.computer && !props.board.allShipsPlaced() && <Setup>ENEMY BOARD</Setup>}
+      {props.computer && !props.board.allShipsPlaced() && <PlacingInstructions />}
     </BoardContainer>
   )
 }

@@ -19,7 +19,7 @@ const ShipRow = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 5px 15px;
+  padding: 5px 10px;
   margin: 8px 0;
 `;
  

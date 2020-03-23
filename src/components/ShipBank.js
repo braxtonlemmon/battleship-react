@@ -11,12 +11,19 @@ const BankContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 3px solid black;
-  padding: 20px 10px;
+  padding: 20px 5px;
+  margin: 10px;
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
   height: 80%;
   width: 90%;
   background: rgba(122, 140, 255, 0.69);
+
+  @media only screen and (min-width: 768px) {
+
+    height: 90%;
+
+  }
 `;
 
 const H2 = styled.h2`

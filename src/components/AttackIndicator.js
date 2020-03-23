@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  border: 5px solid black;
+  background: grey;
+  padding: 10px;
 `;
 
 const Indicator = styled.div`
