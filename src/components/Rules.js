@@ -10,14 +10,34 @@ const RULES = [
   'When a player sinks an enemy ship, the player will be notified. The game ends once one player has destroyed all enemy ships.'
 ];
 
-// Styled component
+// Styled components
+const H1 = styled.h1`
+  font-size: 2em;
+`;
+
 const Step = styled.div`
   text-align: center;
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 50%;
-  margin: 20px 0;
+  width: 70%;
+  margin: 10px 0;
+  padding: 10px;
+  line-height: 1.2em;
+  letter-spacing: 1px;
+  background: #2519fc;
+  color: white;
+  font-weight: 300;
+  border-radius: 30px;
+  border: 3px solid black;
+`;
+
+const Button = styled.div`
+  padding: 10px;
+  border: 3px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #c6c3ff;
 `;
 
 // Function component
@@ -28,9 +48,9 @@ const Rules = (props) => {
 
   return (
     <>
-      <p>RULES</p>
+      <H1>RULES</H1>
       {steps}
-      <button onClick={props.handleClick}>PLAY</button>
+      <Button onClick={props.handleClick}>PLAY</Button>
     </>
   )
 }

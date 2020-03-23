@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  padding: 20px 0 30px 0;
 `;
 
 // Functional component
