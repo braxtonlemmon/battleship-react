@@ -30,6 +30,14 @@ const Step = styled.div`
   font-weight: 300;
   border-radius: 30px;
   border: 3px solid black;
+
+  @media only screen and (min-width: 768px) {
+    width: 50%;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: 40%;
+  }
 `;
 
 const Button = styled.div`

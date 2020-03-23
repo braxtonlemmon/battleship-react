@@ -10,9 +10,13 @@ const PieceBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  width: 100%;
-  height: 100%;
+  border: 3px dashed black;
+  width: 9em;
+  height: 9em;
+  @media only screen and (min-width: 768px) {
+    width: 12em;
+    height: 12em;
+  }
 `;
 
 const Ship = styled.div`
@@ -24,8 +28,13 @@ const Ship = styled.div`
 `;
 
 const Tile = styled.div`
-  height: 2em;
-  width: 2em;
+  height: 1.5em;
+  width: 1.5em;
+
+  @media only screen and (min-width: 768px) {
+    height: 2em;
+    width: 2em;
+  }
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -69,9 +78,9 @@ const ShowPiece = (props)  => {
           index={i}
           onMouseDown={() => handleMouseDown(i)}
         >
-          {i === 0 ? '*' : ''}
+          {i === 0 ? "😜" : ""}
         </Tile>
-      )
+      );
     }
     return tiles;
   }
@@ -82,7 +91,7 @@ const ShowPiece = (props)  => {
         ref={drag} 
         orientation={props.orientation}
       >
-        {generateTiles()}
+        {!props.pShips.includes(props.selectedId) && generateTiles()}
       </Ship>
     </PieceBox>
   );
@@ -92,7 +101,8 @@ const ShowPiece = (props)  => {
 ShowPiece.propTypes = {
   selectedId: PropTypes.number,
   length: PropTypes.number,
-  orientation: PropTypes.string
+  orientation: PropTypes.string,
+  pShips: PropTypes.array
 }
 
 export default ShowPiece;

@@ -18,9 +18,9 @@ const Container = styled.div`
 const ShipRow = styled.div`
   display: flex;
   justify-content: space-between;
-  border: 1px solid red;
   width: 100%;
   padding: 5px 15px;
+  margin: 8px 0;
 `;
  
 // Functional component

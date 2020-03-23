@@ -9,15 +9,17 @@ const BankContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border: 2px solid black;
-  margin-left: 10px;
   padding: 10px;
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
+  height: 80%;
+  width: 90%;
 `;
 
 const H2 = styled.h2`
-  font-size: 20px;
+  font-size: 2em;
   font-weight: bold;
   margin: 10px 0;
 `;
@@ -29,8 +31,8 @@ const OrientationButtons = styled.div`
 `;
 
 const Button = styled.button`
-  height: 20px;
-  width: 80px;
+  margin: 0 10px;
+  font-size: 1em;
   border: 2px solid black;
   border-radius: 5px;
   background: ${props => {
@@ -72,13 +74,12 @@ const ShipBank = (props) => {
           Vertical
         </Button>
       </OrientationButtons>
-      {!props.pShips.includes(props.selectedId) && 
-        <ShowPiece 
-          selectedId={props.selectedId}
-          length={props.length}
-          orientation={props.orientation}
-        />
-      }
+      <ShowPiece 
+        selectedId={props.selectedId}
+        length={props.length}
+        orientation={props.orientation}
+        pShips={props.pShips}
+      />
     </BankContainer>
   )
 }

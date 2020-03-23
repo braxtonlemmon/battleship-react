@@ -23,8 +23,12 @@ const ShipContainer = styled.div`
 
 const Cell = styled.div`
   border: 2px solid black;
-  width: 2em;
-  height: 2em;
+  width: 1.5em;
+  height: 1.5em;
+  @media only screen and (min-width: 768px) {
+    width: 2em;
+    height: 2em;
+  }
 `;
 
 // Functional component

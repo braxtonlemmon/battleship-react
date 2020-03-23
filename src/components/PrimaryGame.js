@@ -10,9 +10,15 @@ import ComputerBank                   from './ComputerBank.js';
 
 // Styled component
 const GameContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 `;
 
 // Function component
@@ -119,6 +125,7 @@ const PrimaryGame = (props) => {
         board={boardC} 
         handleClick={handleClick} 
         playerTurn={playerTurn}
+        computer
       />
       {
       !boardP.allShipsPlaced() && 

@@ -16,8 +16,8 @@ const Cell = styled.div`
   cursor: default;
   cursor: ${props => props.content === 'true' ? 'default' : 'pointer'};
   background: ${props => {
-    if (props.square === 'X') return 'red';
-    if (props.square === 'M') return 'orange';
+    if (props.square === 'X') return 'radial-gradient(red, pink)';
+    if (props.square === 'M') return 'radial-gradient(blue, lightblue)';
     if (/[0-9]{2}/.test(props.square) && props.boardId === 0) return SHIPS[parseInt(props.square[0])].color;
     return 'none';
   }};
