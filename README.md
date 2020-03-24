@@ -8,6 +8,7 @@ In this project I built a browser battleship game using ReactJS. The project is 
 - Practice CSS in JS using styled components.
 - Implement a "smart" AI opponent that does more than just attack random spots on the board.
 - Apply principles of responsive design.
+- Add drag and drop functionality using the React DnD library. This feature does not yet work on touchscreen devices.
 
 # Run
 Clone this repository to your local machine. Then do the following:
