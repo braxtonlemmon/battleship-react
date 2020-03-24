@@ -20,7 +20,7 @@ describe('gameboard', () => {
   });
 
   it('marks "M" if spot is empty', () => {
-    board.receiveAttack(3, 1);
+    board.receiveMiss(3, 1);
     expect(board.board[3][1]).toBe('M');
   });
 
@@ -54,9 +54,9 @@ describe('gameboard', () => {
       expect(board.board[1][1]).toBeTruthy();
     });
 
-    xit('marks "X" if spot is occupied and not hit', () => {
+    it('marks "X" if spot is occupied and not hit', () => {
       board.placeShip(ship, 1, 1);
-      board.receiveAttack(1, 1);
+      board.receiveHit(1, 1);
       expect(board.board[1][1]).toBe('X');
     });
 
