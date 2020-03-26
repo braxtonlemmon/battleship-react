@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const RULES = [
   'Welcome to Battleship! You will be playing against a computer. To setup the game, each player places five ships of varying lengths on a personal gameboard by clicking or dragging. Ships can be positioned horizontally or vertically on the board. They may touch, but may not occupy the same area. All ships must remain within the gameboard boundaries.',
 
-  'Players alternate taking turns. On a turn, a player attacks the opponent\'s gameboard by clicking on an unoccupied square. If the attacks hits an enemy ship, the square will turn red. Otherwise, the attack is considered a miss and the square will turn grey.',
+  'Players alternate taking turns. On a turn, a player attacks the opponent\'s gameboard by clicking on an unoccupied square. If the attack hits an enemy ship, the square will turn red. Otherwise, the attack is considered a miss and the square will turn grey.',
 
   'When a player sinks an enemy ship, the player will be notified. The game ends once one player has destroyed all enemy ships.'
 ];
